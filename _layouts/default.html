@@ -7,13 +7,17 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
+	{% if page.title %}
 	<title>{{ page.title }} &middot; {{ site.name }}</title>
+	{% else %}
+	<title>{{ site.name }}</title>
+	{% endif %}
 
 	<!-- Bootstrap core CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="starter-template.css" rel="stylesheet">
+	<link href="default.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -44,9 +48,7 @@
 	</div>
 
 	<div class="container">
-		<div class="starter-template">
-			{{ content }}
-		</div>
+		{{ content }}
 	</div><!-- /.container -->
 
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -54,5 +56,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	{% for js in page.javascript %}
+	<script src="{{ js }}"></script>
+	{% endfor %}
 </body>
 </html>
